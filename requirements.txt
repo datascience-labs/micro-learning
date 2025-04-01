@@ -1,0 +1,6 @@
+streamlit
+pydantic
+scikit-learn
+transformers
+torch
+python-dotenv
