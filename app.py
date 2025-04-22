@@ -16,7 +16,7 @@ channel  = extractor.extract_all(channel_id="UCZdBJIbJz0P9xyFipgOj1fA")
 
 # 수집된 파일을 파일로 출력
 loader = YouTubeLoader()
-loader.save_channel_to_csv(channel, "channel_videos.csv")
+loader.save_channel_to_xlsx(channel, "channel_videos.xlsx")
 
 print(channel.title)
 print(f"총 재생목록 수: {len(channel.playlists)}")

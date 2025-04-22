@@ -1,4 +1,5 @@
 import polars as pl
+import pandas as pd
 from models import Channel
 
 class YouTubeLoader:
@@ -54,3 +55,18 @@ class YouTubeLoader:
         df = self.flatten_channel_to_df(channel)
         df.write_csv(filepath)
         print(f"✅ CSV 저장 완료: {filepath}")
+
+    def save_channel_to_xlsx(self, channel: Channel, filepath: str):
+        """
+        Channel 객체를 Polars DataFrame으로 변환한 뒤 Excel 파일로 저장
+        """
+
+        # Polars DataFrame을 생성
+        df = self.flatten_channel_to_df(channel)
+
+        # Polars DataFrame을 Pandas DataFrame으로 변환
+        pandas_df = df.to_pandas()
+
+        # Pandas DataFrame을 Excel 파일로 저장
+        pandas_df.to_excel(filepath, index=False, engine="openpyxl")
+        print(f"✅ Excel 저장 완료: {filepath}")
