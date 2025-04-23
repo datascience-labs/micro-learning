@@ -1,3 +1,5 @@
+google-api-python-client
+polars
 openpyxl
 streamlit
 pydantic

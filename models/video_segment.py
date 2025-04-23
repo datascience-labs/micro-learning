@@ -1,5 +1,5 @@
 from pydantic import BaseModel
-from typing import List
+from typing import List, Optional
 
 class VideoSegment(BaseModel):
     id: str
@@ -7,6 +7,7 @@ class VideoSegment(BaseModel):
     title: str
     start_time: float
     end_time: float
+    tags: List[str]
     keywords: List[str]
     summary: str
     cognitive_level: str
