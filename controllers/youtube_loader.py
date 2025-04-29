@@ -27,34 +27,34 @@ class YouTubeLoader:
         rows = []
         for playlist in channel.playlists:
             for video in playlist.videos:
-                if not 'segments' in video:
-                    rows.append({
-                        "channel_id": channel.id,
-                        "channel_title": channel.title,
-                        "channel_description": channel.description,
-                        "channel_published_at": channel.published_at,
-                        "channel_custom_url": channel.custom_url,
-                        "channel_country": channel.country,
-                        "channel_language": channel.language,
-                        "channel_view_count": channel.view_count,
-                        "channel_subscriber_count": channel.subscriber_count,
-                        "channel_video_count": channel.video_count,
-                        "playlist_id": playlist.metadata.playlistId,
-                        "playlist_title": playlist.metadata.title,
-                        "playlist_description": playlist.metadata.description,
-                        "playlist_published_at": playlist.metadata.publishedAt,
-                        "video_id": video.id,
-                        "video_title": video.title,
-                        "video_description": video.description,
-                        "video_published_at": video.publishedAt,
-                        "video_thumbnail_url": video.thumbnailUrl
-                    })
-                else:
+                 if 'segments' in video:
+                #     rows.append({
+                #         "channel_id": channel.id,
+                #         "channel_title": channel.title,
+                #         "channel_description": channel.description,
+                #         "channel_published_at": channel.published_at,
+                #         "channel_custom_url": channel.custom_url,
+                #         "channel_country": channel.country,
+                #         "channel_language": channel.language,
+                #         "channel_view_count": channel.view_count,
+                #         "channel_subscriber_count": channel.subscriber_count,
+                #         "channel_video_count": channel.video_count,
+                #         "playlist_id": playlist.metadata.playlistId,
+                #         "playlist_title": playlist.metadata.title,
+                #         "playlist_description": playlist.metadata.description,
+                #         "playlist_published_at": playlist.metadata.publishedAt,
+                #         "video_id": video.id,
+                #         "video_title": video.title,
+                #         "video_description": video.description,
+                #         "video_published_at": video.publishedAt,
+                #         "video_thumbnail_url": video.thumbnailUrl
+                #     })
+                # else:
                     for segment in video.segments:
                         rows.append({
                             "channel_id": channel.id,
                             "channel_title": channel.title,
-                            "channel_description": channel.description,
+                            # "channel_description": channel.description,
                             "channel_published_at": channel.published_at,
                             "channel_custom_url": channel.custom_url,
                             "channel_country": channel.country,

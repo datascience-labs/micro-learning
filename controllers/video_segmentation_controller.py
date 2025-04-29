@@ -45,7 +45,7 @@ def segment_video_by_description(video_id: str, description: str) -> List[VideoS
         List[VideoSegment]: A list of parsed segments with title, time range, and metadata.
     """
     # Split the description into context and segments
-    parts = re.split(r"=+", description)
+    parts = re.split(r"=+", description) 
     description_context = parts[0].strip() if len(parts) > 1 else ""
     segment_lines = parts[1].strip().splitlines() if len(parts) > 1 else description.strip().splitlines()
 
@@ -74,6 +74,7 @@ def segment_video_by_description(video_id: str, description: str) -> List[VideoS
             video_id=video_id,
             title=clean_title,
             start_time=start_sec,
+            subtitles="",
             tags=[],
             keywords=[],
             end_time=end_sec,

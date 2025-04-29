@@ -9,6 +9,7 @@ class VideoSegment(BaseModel):
     end_time: float
     tags: List[str]
     keywords: List[str]
+    subtitles: Optional[str]
     summary: str
     cognitive_level: str
     dok_level: str

@@ -5,3 +5,6 @@ streamlit
 pydantic
 scikit-learn
 python-dotenv
+youtube-transcript-api
+transformers
+torch

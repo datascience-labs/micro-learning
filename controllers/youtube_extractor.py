@@ -121,6 +121,7 @@ class YouTubeExtractor:
                 Video(
                     id=vid["videoId"],
                     title=vid["title"],
+                    subtitles=None,
                     description=vid.get("description", ""),
                     publishedAt=datetime.fromisoformat(vid["publishedAt"].replace("Z", "+00:00")),
                     thumbnailUrl=vid.get("thumbnailUrl")

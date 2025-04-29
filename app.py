@@ -34,3 +34,7 @@ print(f"첫 번째 비디오 제목: {channel.playlists[0].videos[0].title}")
 
 total_videos = sum(len(playlist.videos) for playlist in channel.playlists)
 print(f"총 비디오 수: {total_videos}")
+
+# 세그먼트가 있는 비디오 수 계산 및 출력
+videos_with_segments = sum(1 for playlist in channel.playlists for video in playlist.videos if video.segments)
+print(f"세그먼트가 있는 비디오 수: {videos_with_segments}")
