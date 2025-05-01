@@ -21,6 +21,7 @@ class Video(BaseModel):
     title: str
     tags: Optional[list[str]] = None
     segments: Optional[list[VideoSegment]] = None
+    summary: Optional[str] = None
     subtitles: Optional[str]
     description: Optional[str]
     publishedAt: datetime

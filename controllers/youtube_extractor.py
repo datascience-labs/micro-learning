@@ -122,6 +122,7 @@ class YouTubeExtractor:
                     id=vid["videoId"],
                     title=vid["title"],
                     subtitles=None,
+                    summary=None,
                     description=vid.get("description", ""),
                     publishedAt=datetime.fromisoformat(vid["publishedAt"].replace("Z", "+00:00")),
                     thumbnailUrl=vid.get("thumbnailUrl")
@@ -145,7 +146,7 @@ class YouTubeExtractor:
             id=meta_raw["id"],
             title=meta_raw["title"],
             description=meta_raw.get("description", ""),
-            published_at=datetime.fromisoformat(meta_raw["publishedAt"].replace("Z", "+00:00")),
+            published_at=datetime.fromisoformat(meta_raw["publishedAt"].replace("Z", "+00:00")) if meta_raw.get("publishedAt") else None,
             custom_url=meta_raw.get("customUrl"),
             thumbnail_url=meta_raw.get("thumbnailUrl"),
             country=meta_raw.get("country"),

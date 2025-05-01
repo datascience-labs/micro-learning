@@ -28,11 +28,13 @@ class YouTubeTransformer:
                 try:
                     # 비디오 설명에서 세그먼트 분리
                     segments = segment_video_by_description(video.id, video.description)
-                    extract_subtitles = self.extract_subtitles(video.id)
-                    extract_summary = self.generate_summary(extract_subtitles)
-
                     if segments:
                         logging.info(f"생성된 세그먼트: {len(segments)}개")
+                        logging.info(f"{video.title}의 세그먼트에 자막 추가 중...")
+                        video.segments = self.add_subtitles_to_segments(video_id=video.id, segments=segments)
+
+                    extract_subtitles = self.extract_subtitles(video.id)
+                    extract_summary = self.generate_summary(extract_subtitles)
 
                     # 태그 추출 및 추가
                     tag_pattern = r"#(\w+)"
@@ -45,11 +47,8 @@ class YouTubeTransformer:
                     video.segments = segments
                     video.tags = tags
                     video.subtitles = extract_subtitles
+                    video.summary = extract_summary
 
-                    # 세그먼트에 자막 추가
-                    if segments:
-                        logging.info(f"{video.title}의 세그먼트에 자막 추가 중...")
-                        video.segments = self.add_subtitles_to_segments(video_id=video.id, segments=segments)
                 except ValueError as e:
                     print(f"⚠️ {video.title}에서 세그먼트를 생성할 수 없습니다: {e}")
 

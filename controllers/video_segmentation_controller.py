@@ -59,8 +59,10 @@ def segment_video_by_description(video_id: str, description: str) -> List[VideoS
         if match:
             matches.append((match.group(1), match.group(2).strip()))
 
-    # Extract tags from the description
-    # tags = re.findall(tag_pattern, description)
+    # Return None if no segments are found
+    if not matches:
+        logging.warning("No segments found in the description.")
+        return None
 
     segments = []
     for idx, (start_str, title) in enumerate(matches):

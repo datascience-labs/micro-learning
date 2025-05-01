@@ -4,6 +4,7 @@ from models.channel import Channel
 from models.playlist import Playlist
 from models.video import Video
 from views.graph_view import GraphView
+from datetime import datetime
 
 class ChannelIngestionController:
     def __init__(self):
@@ -49,7 +50,7 @@ class ChannelIngestionController:
                 id=video_id,
                 title=snippet["title"],
                 description=snippet.get("description", ""),
-                published_at=snippet.get("publishedAt", ""),
+                published_at=datetime.fromisoformat(snippet.get("publishedAt", "1970-01-01T00:00:00Z").replace("Z", "+00:00")) if snippet.get("publishedAt") else None,
                 channel_id=snippet["channelId"],
                 playlist_id=playlist_id
             ))
