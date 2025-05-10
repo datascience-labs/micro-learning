@@ -29,7 +29,8 @@ class YouTubeLoader:
 
         for playlist in channel.playlists:
             for video in playlist.videos:
-                if hasattr(video, 'segments') and video.segments:
+                video.print_summary()  # 비디오 요약 출력
+                if hasattr(video, 'segments'):
                     for segment in video.segments:
                         rows_with_segments.append({
                             "channel_id": channel.id,

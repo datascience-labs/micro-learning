@@ -61,8 +61,10 @@ def segment_video_by_description(video_id: str, description: str) -> List[VideoS
 
     # Return None if no segments are found
     if not matches:
-        logging.warning("No segments found in the description.")
+        # logging.warning("No segments found in the description.")
         return None
+    else:
+        logging.info(f"Found {len(matches)} segments in the description.")
 
     segments = []
     for idx, (start_str, title) in enumerate(matches):

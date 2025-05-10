@@ -31,7 +31,8 @@ class YouTubeTransformer:
                     if segments:
                         logging.info(f"생성된 세그먼트: {len(segments)}개")
                         logging.info(f"{video.title}의 세그먼트에 자막 추가 중...")
-                        video.segments = self.add_subtitles_to_segments(video_id=video.id, segments=segments)
+                        segments = self.add_subtitles_to_segments(video_id=video.id, segments=segments)
+                        video.segments = segments
 
                     extract_subtitles = self.extract_subtitles(video.id)
                     extract_summary = self.generate_summary(extract_subtitles)
@@ -42,9 +43,8 @@ class YouTubeTransformer:
 
                     if tags:
                         logging.info(f"추출된 태그: {tags}")
-
                     # 비디오 객체에 세그먼트 추가
-                    video.segments = segments
+                    
                     video.tags = tags
                     video.subtitles = extract_subtitles
                     video.summary = extract_summary

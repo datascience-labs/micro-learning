@@ -26,3 +26,19 @@ class Video(BaseModel):
     description: Optional[str]
     publishedAt: datetime
     thumbnailUrl: Optional[str]
+
+    def print_summary(self):
+        """
+        세그먼트가 있는 경우 세그먼트 정보의 요약을 출력하고,
+        세그먼트가 없는 경우 비디오 정보의 요약을 출력합니다.
+        """
+        if self.segments:
+            print("세그먼트 요약:")
+            for segment in self.segments:
+                print(f"- 세그먼트 제목: {segment.title}")
+                print(f"  요약: {segment.summary}")
+                print(f"  시작 시간: {segment.start_time}, 종료 시간: {segment.end_time}")
+        else:
+            print("비디오 요약:")
+            print(f"- 비디오 제목: {self.title}")
+            print(f"  요약: {self.summary}")
